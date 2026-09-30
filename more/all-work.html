@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More Work — Nista Maharjan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #FAF8F2;
+  --dot: #DFD9C8;
+  --ink: #221F2B;
+  --ink-soft: #726E7C;
+  --line: #E7E1D2;
+  --coral: #FF93A2;
+
+  --display: 'Bricolage Grotesque', sans-serif;
+  --body: 'Inter', sans-serif;
+  --hand: 'Caveat', cursive;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  caret-color: transparent;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.5;
+  background:
+    radial-gradient(
+      var(--dot) 1.4px,
+      transparent 1.4px
+    ) 0 0 / 26px 26px,
+    var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.wrap {
+  max-width: 1240px;
+  margin: auto;
+  padding: 0 40px;
+}
+
+/* Header */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 0;
+}
+
+.back-link {
+  font: 700 16px var(--display);
+}
+
+.identity-role,
+.home-link {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.identity-role {
+  margin-top: 5px;
+}
+
+.home-link:hover {
+  color: var(--ink);
+}
+
+/* Introduction */
+
+.intro {
+  text-align: center;
+  padding: 36px 0 42px;
+}
+
+.eyebrow {
+  font: 600 20px var(--hand);
+  color: var(--ink-soft);
+}
+
+h1 {
+  font: 700 clamp(30px, 4vw, 44px) / 1.15 var(--display);
+  margin: 10px 0 14px;
+}
+
+.intro p {
+  max-width: 500px;
+  margin: auto;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+/* Masonry gallery */
+
+.work-grid {
+  columns: 3;
+  column-gap: 22px;
+}
+
+.work-card {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  margin: 0 0 22px;
+  padding: 0;
+  break-inside: avoid;
+  overflow: hidden;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(34, 31, 43, .05);
+  transition:
+    transform .2s var(--ease),
+    box-shadow .2s var(--ease);
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(34, 31, 43, .1);
+}
+
+/* .work-shot {
+  display: block;
+  position: relative;
+  aspect-ratio: var(--ratio, 4 / 3);
+  overflow: hidden;
+  background: #efede7;
+}
+
+.work-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: var(--fit, cover);
+  object-position: var(--position, top center);
+} */
+
+.work-shot {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: #efede7;
+}
+
+.work-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.image-unavailable {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 20px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.view-hint {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(34, 31, 43, .88);
+  color: #fff;
+  font-size: 11px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity .2s,
+    transform .2s;
+}
+
+.work-card:hover .view-hint,
+.work-card:focus-visible .view-hint {
+  opacity: 1;
+  transform: none;
+}
+
+.work-caption {
+  display: block;
+  padding: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.work-title {
+  display: block;
+  font: 700 17px / 1.3 var(--display);
+}
+
+.work-type {
+  display: block;
+  font-size: 12px;
+  margin-top: 6px;
+  color: var(--ink-soft);
+}
+
+.closing-note {
+  margin: 28px 0 48px;
+  font: 600 20px var(--hand);
+  color: var(--ink-soft);
+}
+
+/* Footer */
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 26px 0 38px;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.footer-contact {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.copy {
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  font-size: 12px;
+}
+
+.heart {
+  color: var(--coral);
+}
+
+.icon {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+/* Floating contact */
+
+.pin-contact {
+  position: fixed;
+  right: 24px;
+  bottom: 22px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.pin-contact a,
+.pin-contact button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .9);
+}
+
+.copy-status {
+  position: fixed;
+  right: 24px;
+  bottom: 68px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  z-index: 11;
+}
+
+/* Full design overlay */
+
+html.viewer-open {
+  overflow: hidden;
+}
+
+.design-viewer {
+  width: min(1200px, calc(100% - 32px));
+  height: calc(100dvh - 48px);
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: 0 30px 100px #0005;
+}
+
+.design-viewer[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.design-viewer::backdrop {
+  background: rgba(20, 18, 25, .78);
+  backdrop-filter: blur(6px);
+}
+
+.viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.viewer-heading {
+  min-width: 0;
+}
+
+.viewer-heading h2 {
+  font: 700 22px / 1.2 var(--display);
+  margin: 0;
+}
+
+.viewer-meta {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.viewer-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.viewer-controls button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  font-size: 20px;
+}
+
+.viewer-controls button:hover:not(:disabled) {
+  background: var(--ink);
+  color: #fff;
+}
+
+.viewer-controls button:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.viewer-controls .close {
+  background: var(--ink);
+  color: #fff;
+  margin-left: 5px;
+}
+
+.viewer-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 24px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.viewer-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Normal viewing */
+.viewer-scroll {
+  cursor: default;
+}
+
+.viewer-scroll.zoomed {
+  cursor: grab;
+  user-select: none;
+}
+
+.viewer-scroll.zoomed.is-dragging {
+  cursor: grabbing;
+}
+
+.viewer-scroll.zoomed .viewer-image {
+  cursor: grab;
+  user-select: none;
+}
+
+.viewer-scroll.zoomed.is-dragging .viewer-image {
+  cursor: grabbing;
+}
+
+.zoom-value {
+  min-width: 42px;
+  text-align: center;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.viewer-focus {
+  max-width: 720px;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 24px;
+  color: var(--ink-soft);
+}
+
+.viewer-canvas {
+  min-width: 100%;
+}
+
+.viewer-image {
+  max-width: none;
+  height: auto;
+  margin: auto;
+  border: 1px solid rgba(34, 31, 43, 0.10);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.viewer-status {
+  text-align: center;
+  padding: 32px 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .work-grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0 22px;
+  }
+
+  .intro {
+    padding: 24px 0 32px;
+  }
+
+  .pin-contact {
+    display: none;
+  }
+
+  .design-viewer {
+    width: 100%;
+    height: 100dvh;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .viewer-header {
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .viewer-heading {
+    width: 100%;
+  }
+
+  .viewer-controls {
+    margin-left: auto;
+  }
+
+  .viewer-scroll {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-grid {
+    columns: 1;
+  }
+}
+
+@media (hover: none) {
+  .view-hint {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+</style>
+
+</head>
+
+<body>
+<!-- Reusable icons -->
+<svg
+  width="0"
+  height="0"
+  aria-hidden="true"
+  style="position:absolute"
+>
+  <symbol id="instagramIcon" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" rx="5"/>
+    <circle cx="12" cy="12" r="4"/>
+    <circle cx="17.2" cy="6.8" r="1"/>
+  </symbol>
+
+  <symbol id="linkedinIcon" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" rx="3"/>
+    <path
+      d="M7.5 10v7M11.5 17v-4.2c0-1.6 1-2.6
+         2.4-2.6 1.3 0 2.1 1 2.1 2.6V17"
+    />
+    <circle cx="7.5" cy="6.7" r="1"/>
+  </symbol>
+
+  <symbol id="emailIcon" viewBox="0 0 24 24">
+    <rect x="3" y="5" width="18" height="14" rx="2"/>
+    <path d="M3 7l9 6 9-6"/>
+  </symbol>
+</svg>
+
+<div class="wrap">
+  <header class="topbar">
+    <div>
+      <a class="back-link" href="../index.html">
+        ← Nista Maharjan
+      </a>
+
+      <div class="identity-role">UI/UX Designer</div>
+    </div>
+
+    <a class="home-link" href="../index.html">
+      back to home ↗
+    </a>
+  </header>
+
+  <main>
+    <div class="intro">
+      <span class="eyebrow">A few more things…</span>
+
+      <h1>Explorations &amp; visual studies</h1>
+      <p>
+        Landing pages, interface details and graphic experiments. Open a project to take a closer look.
+      </p>
+    </div>
+    <div class="work-grid" id="workGrid" aria-label="More design projects"></div>
+    <p class="closing-note">More gets added here as I finish it.</p>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>
+      Designed &amp; built by Nista, with a little help from AI, and lots of coffeez
+      <span class="heart">&#10084</span>
+    </span>
+
+    <div class="footer-contact">
+      <button
+        class="copy"
+        type="button"
+        data-copy-email
+      >
+        nistamaharjan.24@gmail.com
+      </button>
+
+      <span>Based in Kathmandu, Nepal</span>
+    </div>
+  </div>
+</footer>
+
+<div class="pin-contact">
+  <button type="button" data-copy-email aria-label="Copy email">
+    <svg class="icon" aria-hidden="true">
+      <use href="#emailIcon"/>
+    </svg>
+  </button>
+
+  <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg class="icon" aria-hidden="true">
+      <use href="#instagramIcon"/>
+    </svg>
+  </a>
+
+  <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+    <svg class="icon" aria-hidden="true">
+      <use href="#linkedinIcon"/>
+    </svg>
+  </a>
+
+</div>
+
+<div class="copy-status" id="copyStatus" role="status" hidden>
+  Email copied
+</div>
+
+<!-- Full design overlay -->
+<dialog class="design-viewer" id="designViewer" aria-labelledby="viewerTitle" aria-describedby="viewerFocus">
+  <header class="viewer-header">
+    <div class="viewer-heading">
+      <h2 id="viewerTitle"></h2>
+      <p class="viewer-meta" id="viewerMeta"></p>
+    </div>
+
+    <div class="viewer-controls" role="group" aria-label="Image controls">
+      <button type="button" id="zoomOut" title="Zoom out" aria-label="Zoom out"> − </button>
+      <output class="zoom-value" id="zoomValue" aria-live="polite"> 100% </output>
+      <button type="button" id="zoomIn" title="Zoom in" aria-label="Zoom in"> + </button>
+      <button type="button" id="zoomReset" title="Reset zoom" aria-label="Reset zoom"> ↺ </button>
+      <button type="button" class="close" id="viewerClose" title="Close" aria-label="Close image" autofocus> × </button>
+    </div>
+
+  </header>
+
+  <div class="viewer-scroll" id="viewerScroll">
+    <p class="viewer-focus" id="viewerFocus"></p>
+    <p class="viewer-status" id="viewerStatus" role="status"></p>
+    <div class="viewer-canvas">
+      <img class="viewer-image" id="viewerImage" alt="" hidden>
+    </div>
+  </div>
+</dialog>
+
+
+<script>
+  const projects = [
+    {
+      title: 'Solemate',
+      type: 'Converse Shoes Landing page',
+      tools: ['Figma'],
+      focus: 'A Converse shoe landing page exploration.',
+      preview: 'assets/previews/solemate1.png',
+      full: 'assets/full/solemate.png'
+    },
+
+    {
+      title: 'Furniture Shop',
+      type: 'E-commerce concept',
+      tools: ['Penpot', 'UI exploration'],
+      focus: 'A furniture e-commerce landing page concept.',
+      preview: 'assets/previews/furniture.png',
+      full: 'assets/full/furniture_300.png'
+    },
+
+    {
+      title: 'Forma Health',
+      type: 'E-commerce concept',
+      tools: ['Penpot', 'UI exploration'],
+      focus: 'A healthcare e-commerce landing page concept.',
+      preview: 'assets/previews/forma_100.png',
+      full: 'assets/full/forma_300.png'
+    },
+
+    {
+      title: 'Wellifize',
+      type: 'Icon set',
+      tools: [],
+      focus: 'An exploration of custom line icons as a set.',
+      preview: 'assets/previews/wellifize.png',
+      full: 'assets/full/wellifize.png',
+      fit: 'contain'
+    },
+
+    {
+      title: 'Move to be More',
+      type: 'Brand visual',
+      tools: [],
+      focus: 'A quote card created as a brand campaign visual.',
+      preview: 'assets/previews/move.png',
+      full: 'assets/full/movemore.png',
+      fit: 'contain'
+    },
+
+    {
+      title: 'Songs UI',
+      type: 'Brand visual',
+      tools: [],
+      focus: 'A quote card created as a brand campaign visual.',
+      preview: 'assets/previews/player.png',
+      full: 'assets/full/player_300.png',
+      fit: 'contain'
+    }
+
+
+  ];
+
+  const grid = document.getElementById('workGrid');
+  const viewer = document.getElementById('designViewer');
+  const scrollArea = document.getElementById('viewerScroll');
+  const fullImage = document.getElementById('viewerImage');
+  const status = document.getElementById('viewerStatus');
+
+  const zoomIn = document.getElementById('zoomIn');
+  const zoomOut = document.getElementById('zoomOut');
+  const zoomReset = document.getElementById('zoomReset');
+  const zoomValue = document.getElementById('zoomValue');
+
+  let zoom = 1;
+  let naturalWidth = 0;
+  let requestId = 0;
+  let opener = null;
+
+  /* =========================
+     BUILD PROJECT CARDS
+     ========================= */
+
+  function span(className, text) {
+    const element = document.createElement('span');
+
+    element.className = className;
+
+    if (text) {
+      element.textContent = text;
+    }
+
+    return element;
+  }
+
+  projects.forEach(project => {
+    const card = document.createElement('button');
+
+    card.type = 'button';
+    card.className = 'work-card';
+
+    card.setAttribute('aria-haspopup', 'dialog');
+
+    card.setAttribute(
+      'aria-label',
+      `View ${project.title}: ${project.type}`
+    );
+
+    const shot = span('work-shot');
+
+
+    const image = new Image();
+
+    image.alt = '';
+    image.loading = 'lazy';
+    image.decoding = 'async';
+
+    image.style.setProperty(
+      '--fit',
+      project.fit || 'cover'
+    );
+
+    image.addEventListener(
+      'error',
+      () => {
+        image.hidden = true;
+
+        shot.append(
+          span(
+            'image-unavailable',
+            'Preview unavailable'
+          )
+        );
+      },
+      { once: true }
+    );
+
+
+    image.src = project.preview;
+
+    shot.append(
+      image,
+      span('view-hint', 'View design ↗')
+    );
+
+    const caption = span('work-caption');
+
+    caption.append(
+      span('work-title', project.title),
+      span('work-type', project.type)
+    );
+
+    card.append(
+      shot,
+      caption
+    );
+
+    card.addEventListener(
+      'click',
+      () => {
+        openDesign(project, card);
+      }
+    );
+
+    grid.append(card);
+  });
+
+  /* =========================
+     IMAGE VIEWER
+     ========================= */
+
+  function updateZoom() {
+    const style = getComputedStyle(scrollArea);
+
+    const available =
+      scrollArea.clientWidth -
+      parseFloat(style.paddingLeft) -
+      parseFloat(style.paddingRight);
+
+    const base = Math.min(
+      naturalWidth || available,
+      available
+    );
+
+    fullImage.style.width =
+      `${Math.max(1, base * zoom)}px`;
+
+    zoomValue.textContent =
+      `${Math.round(zoom * 100)}%`;
+
+    zoomIn.disabled =
+      fullImage.hidden || zoom >= 3;
+
+    zoomOut.disabled =
+      fullImage.hidden || zoom <= 0.5;
+
+    zoomReset.disabled =
+      fullImage.hidden;
+
+
+    const isZoomed = zoom > 1;
+
+    scrollArea.classList.toggle(
+      'zoomed',
+      isZoomed
+    );
+
+    if (!isZoomed) {
+      scrollArea.classList.remove(
+        'is-dragging'
+      );
+    }
+  }
+
+  /* =========================
+     GRAB
+     ========================= */
+
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let scrollStartX = 0;
+  let scrollStartY = 0;
+
+  scrollArea.addEventListener(
+    'pointerdown',
+    event => {
+      if (zoom <= 1) return;
+      if (event.button !== 0) return;
+
+      isDragging = true;
+
+      dragStartX = event.clientX;
+      dragStartY = event.clientY;
+
+      scrollStartX =
+        scrollArea.scrollLeft;
+
+      scrollStartY =
+        scrollArea.scrollTop;
+
+      scrollArea.classList.add(
+        'is-dragging'
+      );
+
+      scrollArea.setPointerCapture(
+        event.pointerId
+      );
+
+      event.preventDefault();
+    }
+  );
+
+  scrollArea.addEventListener(
+    'pointermove',
+    event => {
+      if (!isDragging) return;
+
+      const dx =
+        event.clientX - dragStartX;
+
+      const dy =
+        event.clientY - dragStartY;
+
+      scrollArea.scrollLeft =
+        scrollStartX - dx;
+
+      scrollArea.scrollTop =
+        scrollStartY - dy;
+    }
+  );
+
+  function stopDragging(event) {
+    if (!isDragging) return;
+
+    isDragging = false;
+
+    scrollArea.classList.remove(
+      'is-dragging'
+    );
+
+    if (
+      event?.pointerId !== undefined &&
+      scrollArea.hasPointerCapture(
+        event.pointerId
+      )
+    ) {
+      scrollArea.releasePointerCapture(
+        event.pointerId
+      );
+    }
+  }
+
+  scrollArea.addEventListener(
+    'pointerup',
+    stopDragging
+  );
+
+  scrollArea.addEventListener(
+    'pointercancel',
+    stopDragging
+  );
+
+  /* =========================
+     OPEN VIEWER
+     ========================= */
+
+  function openDesign(project, trigger) {
+    opener = trigger;
+
+    zoom = 1;
+    naturalWidth = 0;
+
+    const token = ++requestId;
+
+    document.getElementById(
+      'viewerTitle'
+    ).textContent = project.title;
+
+    document.getElementById(
+      'viewerMeta'
+    ).textContent = [
+      project.type,
+      ...(project.tools || [])
+    ].join(' · ');
+
+    document.getElementById(
+      'viewerFocus'
+    ).textContent = project.focus;
+
+    fullImage.hidden = true;
+    fullImage.removeAttribute('src');
+
+    status.hidden = false;
+    status.textContent =
+      'Loading design…';
+
+    document.documentElement.classList.add(
+      'viewer-open'
+    );
+
+    viewer.showModal();
+
+    scrollArea.scrollTo(
+      0,
+      0
+    );
+
+    updateZoom();
+
+    const loader = new Image();
+
+    loader.onload = () => {
+      if (
+        token !== requestId ||
+        !viewer.open
+      ) {
+        return;
+      }
+
+      naturalWidth =
+        loader.naturalWidth;
+
+      fullImage.src =
+        loader.src;
+
+      fullImage.alt =
+        `${project.title} — complete design`;
+
+      fullImage.hidden = false;
+
+      status.hidden = true;
+
+      updateZoom();
+    };
+
+    loader.onerror = () => {
+      if (
+        token !== requestId ||
+        !viewer.open
+      ) {
+        return;
+      }
+
+      status.textContent =
+        'This design image is currently unavailable.';
+    };
+
+
+
+    loader.src = project.full;
+  }
+
+  /* =========================
+     ZOOM CONTROLS
+     ========================= */
+
+  zoomIn.addEventListener(
+    'click',
+    () => {
+      zoom = Math.min(
+        3,
+        zoom + 0.25
+      );
+
+      updateZoom();
+    }
+  );
+
+  zoomOut.addEventListener(
+    'click',
+    () => {
+      zoom = Math.max(
+        0.5,
+        zoom - 0.25
+      );
+
+      updateZoom();
+    }
+  );
+
+  zoomReset.addEventListener(
+    'click',
+    () => {
+      zoom = 1;
+
+      updateZoom();
+
+      scrollArea.scrollTo(
+        0,
+        0
+      );
+    }
+  );
+
+  /* =========================
+     CLOSE VIEWER
+     ========================= */
+
+  document.getElementById(
+    'viewerClose'
+  ).addEventListener(
+    'click',
+    () => {
+      viewer.close();
+    }
+  );
+
+
+  let startedOutside = false;
+
+  viewer.addEventListener(
+    'pointerdown',
+    event => {
+      startedOutside =
+        event.target === viewer;
+    }
+  );
+
+  viewer.addEventListener(
+    'click',
+    event => {
+      if (
+        startedOutside &&
+        event.target === viewer
+      ) {
+        viewer.close();
+      }
+
+      startedOutside = false;
+    }
+  );
+
+  /* =========================
+     VIEWER CLOSED
+     ========================= */
+
+  viewer.addEventListener(
+    'close',
+    () => {
+      requestId++;
+
+      document.documentElement.classList.remove(
+        'viewer-open'
+      );
+
+      fullImage.hidden = true;
+      fullImage.removeAttribute('src');
+
+      scrollArea.classList.remove(
+        'zoomed',
+        'is-dragging'
+      );
+
+      if (opener?.isConnected) {
+        opener.focus({
+          preventScroll: true
+        });
+      }
+    }
+  );
+
+  
+
+  window.addEventListener(
+    'resize',
+    () => {
+      if (viewer.open) {
+        updateZoom();
+      }
+    }
+  );
+
+
+
+  const EMAIL =
+    'nistamaharjan.24@gmail.com';
+
+  let copyTimer;
+
+  document
+    .querySelectorAll('[data-copy-email]')
+    .forEach(button => {
+      button.addEventListener(
+        'click',
+        async () => {
+          try {
+            await navigator.clipboard.writeText(
+              EMAIL
+            );
+
+            const toast =
+              document.getElementById(
+                'copyStatus'
+              );
+
+            toast.hidden = false;
+
+            clearTimeout(copyTimer);
+
+            copyTimer = setTimeout(
+              () => {
+                toast.hidden = true;
+              },
+              1800
+            );
+          } catch {
+            window.prompt(
+              'Copy this email address:',
+              EMAIL
+            );
+          }
+        }
+      );
+    });
+</script>
+
+
+</body>
+</html>

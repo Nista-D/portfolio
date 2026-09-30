@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram – UI Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root{
+      --bg: #FAF8F2;
+      --dot: #E6E1D3;
+      --panel: #ffffff;
+      --text-main: #221F2B;
+      --text-body: #4A4653;
+      --text-muted: #726E7C;
+      --nav-tint: #D3DAEA;
+      --nav-ink: #414A6B;
+      --nav-accent: #6B76A0;
+      --nav-glass: rgba(211,218,234,.55);
+      --divider: #E7E1D2;
+      --radius: 16px;
+      --card-bg: #ffffff;
+      --border-subtle: #EDE9DD;
+      --border: #E7E1D2;
+      --transition:  all 0.3s ease;
+      --font-display:'Bricolage Grotesque', sans-serif;
+      --accent:  linear-gradient(
+          135deg, 
+          #405DE6 0%,   /* Royal Blue */
+          #833AB4 25%,  /* Purple */
+          #C13584 40%,  /* Dark Pink */
+          #E1306C 50%,  /* Purple-Red */
+          #FD1D1D 60%,  /* Red */
+          #F56040 70%,  /* Dark Orange */
+          #F77737 80%,  /* Orange */
+          #FCAF45 90%,  /* Yellow */
+          #FFDC80 100%  /* Light Yellow */ );
+    }
+
+    *{ 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      scrollbar-width: thin;
+    }
+
+
+    body{
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      font-size: 16px;
+      background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+      background-size: 34px 34px;
+      overflow-x: hidden;
+    }
+
+    .container{
+      max-width: 1200px;
+      margin: auto;
+      padding: 64px 24px 160px;
+    }
+
+
+    /* Breadcrumb Navigation */
+    .contain {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .breadcrumb-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      background: var(--nav-glass);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(107,118,160,.4);
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999; 
+      width: calc(100% - 40px);
+      max-width: 1400px;
+      box-sizing: border-box;
+      box-shadow: 0 6px 20px rgba(34,31,43,.06);
+    }
+
+    .breadcrumb-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .breadcrumb-link {
+      color: var(--text-body);
+      text-decoration: none;
+      transition: var(--transition);
+      padding: 4px 8px;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .breadcrumb-link:hover {
+      color: var(--text-main);
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .breadcrumb-link.current {
+      color: var(--text-main);
+      font-weight: 500;
+      cursor: default;
+    }
+
+    .breadcrumb-separator {
+      color: var(--text-body);
+      opacity: 0.6;
+      font-size: 0.8rem;
+      margin: 0 0.25rem;
+    }
+
+    .breadcrumb-home {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+    }
+
+    .title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2.4rem,5vw,3.2rem);
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: var(--text-main);
+
+      background: var(--accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+  }
+
+    h2{
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.6rem,3vw,2rem);
+      margin-bottom: 20px;
+    }
+
+    h3{
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    p{ 
+      max-width: 760px; 
+      color: var(--text-body);
+       margin-bottom: 16px; 
+    }
+
+    ul{ 
+      max-width: 760px; 
+      margin-left: 20px; 
+    }
+
+    li{ 
+      margin-bottom: 12px; 
+      color: var(--text-body); 
+    }
+
+    .divider{ 
+      height: 1px; 
+      background: var(--divider); 
+      margin: 56px 0; 
+    }
+
+
+    /* HERO */
+    .hero{
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 64px;
+      align-items: start;
+      min-height: 85vh;
+      padding-bottom: 40px;
+
+    }
+
+    .hero-text{
+      margin-bottom: 0;
+      padding-top: 120px;
+
+    }
+
+    .hero-text p{
+      margin-bottom: 8px;
+    }
+
+    .hero-divider{ 
+      width: 100%;
+      max-width: 1400px;
+      height: 1px; 
+      margin: 0 auto;
+      background: var(--divider); 
+    }
+
+    .meta{
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .meta-row{
+      display: flex;
+      gap: 16px;
+      font-size: .75rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-right video{
+      width: auto;
+      max-width: 300px;
+      margin: 16px 0 6px;
+      border-radius: 46px;
+      box-shadow: 0 20px 48px rgba(34,31,43,.10);
+    }
+
+  /* Subtle Prototype Link */
+    .subtle-prototype-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 0;
+      padding: 8px 40px;
+      color: var(--text-body);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      transition: all 0.25s ease;
+      border-radius: 999px;
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+
+    .subtle-prototype-link:hover {
+      color: var(--text-main);
+      background: var(--nav-tint);
+      border-color: var(--nav-accent);
+      transform: translateY(-2px);
+    }
+
+    .subtle-prototype-link i {
+      font-size: 0.8rem;
+      transition: transform 0.25s ease;
+      opacity: 0.7;
+    }
+
+    .subtle-prototype-link:hover i {
+      transform: translateX(4px);
+      opacity: 1;
+    }
+
+    .link-text {
+      position: relative;
+    }
+
+
+    /* LAYOUT */
+    .layout{
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 80px;
+      margin-top: 160px;
+    }
+
+    .toc{
+      position: sticky;
+      top: 120px;
+      border-left: 2px solid var(--divider);
+      padding-left: 16px;
+      align-self: start;
+      scroll-behavior: smooth;
+    }
+
+    .toc ul{ 
+      list-style: none; 
+    }
+
+    .toc li{ 
+      margin-bottom: 14px; 
+    }
+
+    .toc a{ 
+      color: var(--text-muted); 
+      font-size: .9rem; 
+      text-decoration: none; 
+      display: block;
+      padding: 8px 10px 8px 13px;
+      transition:  all 0.3s ease;
+      border:  1px solid transparent;
+      border-left: 3px solid transparent;
+      border-radius:  0 8px 8px 0;
+    }
+
+    .toc a:hover{ 
+      color: var(--text-main);
+      text-decoration: none;
+      transform: translateX(4px);
+
+      background: #ffffff;
+      border-color: var(--border);
+      border-left-color: var(--border);
+      box-shadow: 0 3px 10px rgba(34,31,43,.06);
+    }
+
+    .toc a.active {
+      color: var(--nav-ink);
+      font-weight:  600;
+      transform: translateX(4px);
+
+      background: var(--nav-tint);
+      border-color: transparent;
+      border-left-color: var(--nav-accent);
+    }
+
+    section{ 
+      margin-bottom: 72px; 
+      scroll-margin-top: 120px; 
+    }
+
+    strong {
+      color: var(--text-main);
+    }
+
+    em {
+      color: var(--text-main);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+
+    @media(max-width: 900px){
+      .hero{ grid-template-columns: 1fr; min-height: auto; }
+      .layout{ grid-template-columns: 1fr; margin-top: 64px; }
+      .toc{ position: relative; top: 0; border-left: none; padding-left: 0; margin-bottom: 48px; }
+    }
+
+    @media(max-width: 420px){
+      .breadcrumb-nav{
+        padding: 10px 14px;
+        font-size: 0.8rem;
+        gap: 0.35rem;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <!-- Breadcrumb Navigation -->
+  <div class="contain">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <div class="breadcrumb-item">
+                <a href="../../index.html" class="breadcrumb-link">
+                    <span class="breadcrumb-home">
+                      <i class="fas fa-home"></i> 
+                    </span>
+                </a>
+            </div>
+
+            <span class="breadcrumb-separator">›</span>
+            <div class="breadcrumb-item">
+                <a href="../../projects.html" class="breadcrumb-link">Projects</a>
+            </div>
+            <span class="breadcrumb-separator">›</span>
+            <div class="breadcrumb-item">
+                <span class="breadcrumb-link current">Instagram</span>
+            </div>
+      </nav>
+  </div> 
+
+  <main class="container">
+
+    <header class="hero">
+      <div class="hero-text">
+        <h1 class="title">Instagram UI Replication</h1>
+        <p>
+          This is a self-initiated UI replication of the Instagram mobile app, based on close visual inspection and repeated use.
+          The work focuses on accurately recreating layout, spacing, typography, and component behavior rather than introducing new ideas or patterns.
+        </p>
+        <p>
+          I didn't redesign Instagram. I set out to replicate it pixel-for-pixel where practical, to see whether my visual craft,
+          component thinking, and attention to detail could hold up against one of the most polished UIs out there.
+        </p>
+        <p>This project focuses purely on UI accuracy and interface understanding, not UX problem-solving project or product decision-making.</p>
+
+
+        <br>
+        <p class="meta">Scope:  UI replication · Personal practice · No UX research</p>
+
+        <div class="meta-row">
+          <span>Role: UI Designer</span>
+          <span>Tools: Figma</span>
+          <span>Platform: Mobile</span>
+        </div>
+
+      </div>
+
+      <div class="hero-right">
+        <video autoplay muted loop playsinline>
+          <source src="./img/insta (this).mp4" type="video/mp4" />
+        </video>
+
+        <a
+          href="https://embed.figma.com/proto/sqxmnAWBcohDO0eKaDJiow/Instagram?page-id=0%3A1&node-id=201-25&p=f&viewport=692%2C190%2C0.04&scaling=scale-down&content-scaling=fixed&starting-point-node-id=201%3A25&embed-host=share"
+          target="_blank"
+          rel="noopener"
+          class="subtle-prototype-link"
+        >
+          <span class="link-text">View Figma Prototype</span>
+          <i>↗</i>
+        </a>
+      </div>
+
+    </header>
+    <div class="hero-divider"></div>
+
+    <div class="layout">
+      <nav class="toc">
+        <ul>
+          <li><a href="#why">Why instagram?</a></li>
+          <li><a href="#constraints">Constraints</a></li>
+          <li><a href="#project">What this project is</a></li>
+          <li><a href="#process">How I approached it</a></li>
+          <li><a href="#lessons">What I learnt</a></li>
+          <li><a href="#next">What I'd do next</a></li>
+        </ul>
+      </nav>
+
+      <div class="content">
+        <section id="why">
+          <h2>Why Instagram?</h2>
+          <p>If you've used Instagram (which… you definitely have), you know how clean and intentional it feels. Instead of trying to outdo it, I turned it into a benchmark to test myself against. 
+            <p>The challenge was simple: Can I recreate a world-class interface closely enough that it still feels familiar and believable? If I could get convincingly close to <em>THAT</em> quality bar, I'd trust my fundamentals anywhere else. As the saying goes, "A good designer can create anything, great designers master replication".</p>
+        </section>
+        <div class="divider"></div>
+
+
+        <section id="constraints">
+          <h2>Constraints</h2>
+          <ul>
+            <li><strong>Personal practice only.</strong> No testing, research, or live data. The focus was purely on execution and visual craft.</li>
+            <li><strong>Replication focus.</strong> Only visual craft and component consistency were considered, no UX redesign.</li>
+            <li><strong>Free Figma tier realities.</strong> No branching, shared libraries, or advanced prototyping features. To work around this, everything lived in a single file with a dedicated component page and manual consistency checks.</li>
+          </ul>
+        </section>
+        <div class="divider"></div>
+
+
+        <section id="project">
+          <h2>What this project actually is</h2>
+          <ul>
+            <li>High-fidelity UI replication</li>
+            <li>Pixel & spacing accuracy where practical</li>
+            <li>Component-driven structure</li>
+            <li>Consistent styling across multiple flows</li>
+          </ul>
+
+        </section>
+        <div class="divider"></div>
+
+        <section id="process">
+          <h2>Design Approach</h2>
+          <ul>
+            <li>Broke down key screens into reusable components before assembling flows</li>
+            <li>Used spacing and typography audits to catch inconsistencies early</li>
+            <li>Compared screens side-by-side against the original to fine-tune alignment and hierarchy</li>
+            <li>Iterated in small passes instead of rebuilding entire screens at once</li>
+          </ul>
+        </section>
+        <div class="divider"></div>
+
+        <section id="lessons">
+          <h2>Design Lessons</h2>
+
+          <!-- <div class="problem-block">
+            <h3>Cleaner, more purposeful onboarding</h3>
+            <p>I removed redundant CTAs and introduced a clearer entry path. “Create Account” is the primary action, with an obvious “Already have an account?” option for returning users. Simple, direct, and no unnecessary decisions upfront. <a href="#problem-onboarding" class="jump-link">↑ View issue</a></p>
+          </div> -->
+
+          <ul>
+            <li><strong>Replication sharpens visual judgment.</strong>  It forces you to see like the original designer.</li>
+            <li><strong>Systems over screens.</strong> Once components were solid, screens came together fast.</li>
+            <li><strong>Details compound.</strong> One-pixel alignment errors feel bigger than they look; fix them early.</li>
+            <li><strong>Constraints =! excuses.</strong> Free-tier tooling pushed me to build a tighter system using limited features and manual QA checklists.</li>
+          </ul>
+
+        </section>
+        <div class="divider"></div>
+ 
+
+        <section id="next">
+          <h2>What I'd do next</h2>
+          <ul>
+            <li>Recreate micro-interactions like burst, story ring progress, so on and so forth.</li>
+            <li>Recreate a few additional screens to cover edge and empty states</li>
+          </ul>
+        </section>
+
+        
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // if ('scrollRestoration' in history) {
+    //   history.scrollRestoration = 'manual';
+    // }
+
+    // window.addEventListener('load', () => {
+    //   if (window.location.hash) {
+    //     history.replaceState(null, '', window.location.pathname);
+    //   }
+    //   window.scrollTo(0, 0);
+    // });
+    
+    
+    const sections = document.querySelectorAll("section[id]");
+    const tocLinks = document.querySelectorAll(".toc a");
+
+    let isTocClickScrolling = false;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        if (isTocClickScrolling) return;
+
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(link => link.classList.remove("active"));
+
+            const activeLink = document.querySelector(
+              `.toc a[href="#${entry.target.id}"]`
+            );
+            if (activeLink) activeLink.classList.add("active");
+          }
+        });
+      },
+      {
+        rootMargin: "-45% 0px -45% 0px",
+        threshold: 0
+      }
+    );
+
+    sections.forEach(section => observer.observe(section));
+
+    // Smooth TOC scrolling
+    tocLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        isTocClickScrolling = true;
+
+        const targetId = link.getAttribute("href").replace("#", "");
+        const targetSection = document.getElementById(targetId);
+        if (!targetSection) return;
+
+        tocLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+        // Re-enable observer after scroll settles
+        setTimeout(() => {
+          isTocClickScrolling = false;
+        }, 600);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
